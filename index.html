@@ -3,7 +3,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" type="text/css">
+    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" type="text/css">-->
+    <link href="lib/angular-material/angular-material.min.css" rel="stylesheet" type="text/css"/>
     <link href="lib/material-design-icons/iconfont/material-icons.css" rel="stylesheet" type="text/css"/>
 
 
@@ -11,31 +12,42 @@
 <body ng-app="rms-plugin" >
 
 
-<md-sidenav class="md-sidenav-left" md-component-id="left" layout="column">
-    <md-menu>
-        <md-menu-content ng-controller="menu" >
-            <md-menu-item ng-repeat="i in itemText">
-                <md-button class="md-primary">{{i}}</md-button>
-            </md-menu-item>
-        </md-menu-content>
-    </md-menu>
+<md-sidenav class="md-sidenav-left"  md-component-id="left" layout="column">
+
+    <!--<img class="md-avatar" src="img/avatar.jpg"/>-->
+
+    <div ng-controller="menus">
+        <md-menu ng-repeat="i in sideNavMenu">
+            <md-menu-content>
+                <md-subheader>{{i.subheader}}</md-subheader>
+                <md-menu-item ng-repeat="m in i.menu">
+                    <md-button class="md-primary" ng-click="itemClick()">{{m}}</md-button>
+                </md-menu-item>
+                <md-divider></md-divider>
+            </md-menu-content>
+        </md-menu>
+    </div>
 </md-sidenav>
 
 
+<md-toolbar ng-controller="g-controller">
+    <div class="md-toolbar-tools" layout="row">
+        <md-button class="md-icon-button" ng-click="menuOnclick()">
+            <md-icon><i class="material-icons">menu</i></md-icon>
+        </md-button>
+        <h2 flex md-truncate>{{title}}</h2>
+    </div>
+</md-toolbar>
 
-<md-content flex>
-    <md-toolbar ng-controller="g-controller">
-        <div class="md-toolbar-tools" layout="row">
-            <md-button class="md-icon-button" ng-click="menuOnclick()">
-                <md-icon><i class="material-icons">menu</i></md-icon>
-            </md-button>
-            <h2 flex md-truncate>{{title}}</h2>
-        </div>
-    </md-toolbar>
+
+
+<md-content>
+    <table>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
 </md-content>
-
-
-
 
 
 
@@ -58,8 +70,20 @@
         $scope.title = "RMS插件管理系统";
     });
 
-    app.controller('menu',function($scope){
-        $scope.itemText = ['用户管理','插件管理'];
+    app.controller('menus',function($scope,$mdSidenav){
+        $scope.itemClick = function(){
+            $mdSidenav('left').toggle();
+        };
+        $scope.sideNavMenu =[
+            {
+                subheader : 'user',
+                menu : ['用户管理','权限管理']
+            },
+            {
+                subheader : 'plugin',
+                menu : ['插件管理','版本管理']
+            }
+        ];
     });
 </script>
 

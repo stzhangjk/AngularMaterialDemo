@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" type="text/css">
+    <!--<link href="lib/angular-material/angular-material.min.css" rel="stylesheet" type="text/css"/>-->
+    <link href="lib/material-design-icons/iconfont/material-icons.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body ng-app="rms-plugin" layout="row" layout-align="center center">
+
+
+<md-card class="md-whiteframe-12dp" flex="30">
+    <form>
+
+    <md-card-title>
+
+        <md-card-title-text>
+            <span class="md-headline">RMS Plugin Management</span>
+            <span class="md-subhead">插件管理系统</span>
+        </md-card-title-text>
+        <md-card-title-media>
+            <img class="md-media-md" src="img/avatar.jpg"/>
+        </md-card-title-media>
+    </md-card-title>
+
+    <md-card-content>
+
+            <md-input-container class="md-block">
+                <md-icon><i class="material-icons">person</i></md-icon>
+                <label>用户名</label>
+                <input name="username" type="text" value required/>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <md-icon><i class="material-icons">vpn_key</i></md-icon>
+                <label>密码</label>
+                <input name="password" type="password" value required/>
+            </md-input-container>
+
+    </md-card-content>
+
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-raised md-primary">登陆</md-button>
+    </md-card-actions>
+
+    </form>
+</md-card>
+
+
+
+
+
+
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<!--<script src="lib/angular-material/angular-material.min.js"></script>-->
+<!-- Your application bootstrap  -->
+<script type="text/javascript">
+    /* You must include the dependency on 'ngMaterial' */
+    var app = angular.module('rms-plugin', ['ngMaterial']);
+
+</script>
+</body>
+</html>
